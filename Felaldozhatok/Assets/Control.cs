@@ -6,6 +6,8 @@ public class Control : MonoBehaviour
 {
     public int movementSpeed = 15;
     public bool controllable = false;
+    public bool goLeft = true;
+    public bool goRight = true;
     public GameObject playerAttack;
     public GameObject player;
     public float attackRate = 1;
@@ -19,13 +21,14 @@ public class Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (controllable)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A)&&goLeft)
             {
                 transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D)&&goRight)
             {
                 transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
             }
@@ -41,4 +44,5 @@ public class Control : MonoBehaviour
         }
 
     }
+
 }

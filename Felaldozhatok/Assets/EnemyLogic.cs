@@ -17,6 +17,7 @@ public class EnemyLogic : MonoBehaviour
         if (health == 0)
         {
             Destroy(this.gameObject);
+
         }
     }
     private void OnTriggerEnter(Collider other)
