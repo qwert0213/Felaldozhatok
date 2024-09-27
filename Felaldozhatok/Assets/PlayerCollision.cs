@@ -29,7 +29,7 @@ public class PlayerCollision : MonoBehaviour
             control.controllable = false;
             gameOver.enabled = true;
             wait += Time.deltaTime;
-            if (wait >1)
+            if (wait > 1)
             {
                 GameObject rocket = GameObject.Find("Player");
                 rocket.SetActive(false);
