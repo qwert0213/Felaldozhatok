@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,14 @@ public class EnemyLogic : MonoBehaviour
     {
         if (health <= 0)
         {
-            // Ha az ellens�g meghal, jelentj�k az EnemyManager-nek
+            // Ellenőrizzük, hogy enemy1 típusú ellenségről van-e szó
+            if (gameObject.name.Contains("enemy1"))
+            {
+                // Pénz hozzáadása
+                PlayerStats.instance.AddMoney(10);
+            }
+
+            // Ha az ellenség meghal, jelentjük az EnemyManager-nek
             EnemyManager.instance.EnemyKilled();
             Destroy(this.gameObject);
         }
