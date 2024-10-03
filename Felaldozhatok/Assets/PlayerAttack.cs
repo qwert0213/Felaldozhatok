@@ -5,12 +5,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public int travelSpeed = 10;
-    public EnemyLogic enemyLogic;
     public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
-        enemyLogic = GameObject.FindGameObjectWithTag("enemy").GetComponent<EnemyLogic>();
     }
 
     // Update is called once per frame
@@ -24,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "enemy")
+        if (other.gameObject.tag == "enemy1" || other.gameObject.tag == "enemy2" || other.gameObject.tag == "enemy3" || other.gameObject.tag == "boss1")
         {
             Destroy(this.gameObject);
         }

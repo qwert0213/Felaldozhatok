@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6284322057179798166}
   - component: {fileID: 1185994615985206991}
   - component: {fileID: 7185909810033318323}
-  - component: {fileID: 6565220955265195825}
-  - component: {fileID: -7775095323056892180}
+  - component: {fileID: -4354195151961686347}
+  - component: {fileID: -2683286536136836476}
   m_Layer: 0
-  m_Name: enemy1
-  m_TagString: enemy1
+  m_Name: boss1
+  m_TagString: boss1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.3, y: 13, z: 0}
-  m_LocalScale: {x: 0.53331, y: 0.53331, z: 0.53331}
+  m_LocalScale: {x: 0.88022816, y: 0.88022816, z: 0.88022816}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: acb54ef55cbbdd44d98aac6806a6bcb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d788a8d9e750798448ba71aae7cbbaf0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +136,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.12, y: 5.12, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6565220955265195825
+--- !u!114 &-4354195151961686347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,14 +145,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163161024552650291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639c673ffe35d5a4dbb73e7e739f14a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 47223d18fd830bd4e87d21cbc572d91e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 0
   playerAttack: {fileID: 2693713189879231999, guid: 6e537a52f40d8b744b4441916e26ecd0, type: 3}
   damageTaken: {fileID: 0}
   enemyManager: {fileID: 0}
---- !u!114 &-7775095323056892180
+--- !u!114 &-2683286536136836476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,11 +161,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163161024552650291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df15600e2fe79d4b81fac7dca7d5b66, type: 3}
+  m_Script: {fileID: 11500000, guid: 7826d2a29089a6648b4813819a6b58ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elapsedTime: 0
   travelSpeed: 0
-  attackRate: 5
+  attackRate: 0
   control: {fileID: 0}
-  fireball: {fileID: 7462830770649794244, guid: 21e6250af5b4fd346b49b05a2abd38fc, type: 3}
+  attackSound: {fileID: 0}
+  spell: {fileID: 8588120635630638649, guid: 55fcf90f6de8f874f92081ede3b96a04, type: 3}
+  spellBook: {fileID: 8588120635630638649, guid: ef5085452a09f23479a59bd78853c875, type: 3}
+  abilityCounter: 1
