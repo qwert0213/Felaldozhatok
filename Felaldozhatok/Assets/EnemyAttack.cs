@@ -5,14 +5,16 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float elapsedTime = 0;
-    public float attackRate = 5;
-    public GameObject fireball;
-    public float bulletSize = 1/2;
+    public int travelSpeed;
+    public float attackRate;
     public Control control;
+    public AudioSource attackSound;
     // Start is called before the first frame update
     void Start()
     {
         control = GameObject.Find("Player").GetComponent<Control>();
+        SetAttackRate();
+        SetAttackSound();
     }
 
     // Update is called once per frame
@@ -32,11 +34,7 @@ public class EnemyAttack : MonoBehaviour
         }
 
     }
-    public void Shoot()
-    {
-        float right = transform.position.x;
-        GameObject enemyAttack = Instantiate(fireball, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-    }
-
-
+    public virtual void Shoot() { }
+    public virtual void SetAttackRate() { }
+    public virtual void SetAttackSound() { }
 }

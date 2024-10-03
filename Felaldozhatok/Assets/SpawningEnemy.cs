@@ -5,46 +5,66 @@ using UnityEngine;
 public class SpawningEnemy : MonoBehaviour
 {
     public GameObject enemy1; // Az ellenség prefab
-    public int offset = 18; // A spawn pozíció offsetje
+    public GameObject enemy2;
+    public GameObject enemy3;
+    public GameObject boss1;
     public float spawnRate = 3; // Spawn sebessége másodpercenként
     public float elapsedTime = 2; // Elapsed time for spawning
-    public int health = 1; // Az ellenség egészsége
+   // public int health = 1; // Az ellenség egészsége
     public Control control; // Referencia a játékos kontrolljára
-    private int enemyCount = 0; // Az eddig spawnolt ellenségek száma
-    public int maxEnemies = 10; // Maximális spawnolható ellenségek száma
+    public int enemyCount =0; // Az eddig spawnolt ellenségek száma
+    public bool canSpawn;
+    public int maxEnemies;
+    public EnemyManager enemyManager;
 
     // Start is called before the first frame update
     void Start()
     {
         control = GameObject.Find("Player").GetComponent<Control>();
-
         // A maximális ellenségek számának beállítása az EnemyManager-ben
-        EnemyManager.instance.SetMaxEnemies(maxEnemies);
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        enemyManager.SetMaxEnemies(maxEnemies);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (control.controllable)
+        if (enemyCount < maxEnemies)
         {
-            if (elapsedTime < spawnRate)
+            if (control.controllable)
             {
-                elapsedTime += Time.deltaTime;
-            }
-            else if (enemyCount < maxEnemies) // Csak akkor spawnolj, ha az ellenségek száma kevesebb mint maxEnemies
-            {
-                SpawnEnemy();
-                elapsedTime = 0;
+                if (elapsedTime < spawnRate)
+                {
+                    elapsedTime += Time.deltaTime;
+                    canSpawn = false;
+                }
+                else
+                {
+                    canSpawn = true;
+                    elapsedTime = 0;
+                }
             }
         }
     }
 
-    public void SpawnEnemy()
+    public void SpawnEnemy1()
     {
-        float right = transform.position.x + offset;
-        GameObject newEnemy = Instantiate(enemy1, new Vector3(Random.Range(-9, right), transform.position.y, 0), transform.rotation);
-        enemyCount++; // Növeld az ellenségek számát
-
+        SpawnNewEnemy(enemy1);
         // A RegisterEnemy() függvényt már nem használjuk itt
+    }
+    public void SpawnEnemy2()
+    {
+        SpawnNewEnemy(enemy2);
+    }
+    public void SpawnEnemy3()
+    {
+        SpawnNewEnemy(enemy3);
+    }
+    public void SpawnBoss1()
+    {
+        SpawnNewEnemy(boss1);
+    }
+    public void SpawnNewEnemy(GameObject enemy) { 
+        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-9, 9), transform.position.y, 0), transform.rotation);
     }
 }

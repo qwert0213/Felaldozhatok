@@ -12,12 +12,16 @@ public class PlayerCollision : MonoBehaviour
     public AudioSource damageTaken;
     public Text gameOver;
     public float wait = 0;
+    public EnemyManager enemyManager;
+    public PlayerStats playerStats;
     // Start is called before the first frame update
     void Start()
     {
         control = GameObject.Find("Player").GetComponent<Control>();
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         health = 3;
-        damageTaken = gameObject.GetComponent<AudioSource>();
+        damageTaken = GameObject.Find("Damage").GetComponent<AudioSource>();
+        playerStats = GameObject.Find("EnemyManager").GetComponent<PlayerStats>();
         gameOver.enabled = false;
     }
 
@@ -26,6 +30,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (health == 0)
         {
+            enemyManager.ModifyTxt();
             control.controllable = false;
             gameOver.enabled = true;
             wait += Time.deltaTime;
@@ -34,8 +39,6 @@ public class PlayerCollision : MonoBehaviour
                 GameObject rocket = GameObject.Find("Player");
                 rocket.SetActive(false);
             }
-
-
         }
     }
 
@@ -44,6 +47,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.tag == "enemyAttack")
         {
             damageTaken.Play();
+            playerStats.AddScore(-20);
             health -= 1;
         }
         if (other.gameObject.tag == "wallLeft")

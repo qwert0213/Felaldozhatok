@@ -1,21 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyLogic : MonoBehaviour
 {
-    public int health = 1;
+    public int health;
     public PlayerAttack playerAttack;
+    public AudioSource damageTaken;
 
-    // Update is called once per frame
     void Update()
     {
         if (health <= 0)
         {
-            // Ha az ellenség meghal, jelentjük az EnemyManager-nek
+            // Ha az ellensï¿½g meghal, jelentjï¿½k az EnemyManager-nek
             EnemyManager.instance.EnemyKilled();
             Destroy(this.gameObject);
         }
+        playerAttack = GameObject.FindGameObjectWithTag("playerAttack").GetComponent<PlayerAttack>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +24,8 @@ public class EnemyLogic : MonoBehaviour
         if (other.gameObject.tag == "playerAttack")
         {
             health -= playerAttack.damage;
+            damageTaken.Play();
+            transform.position = new Vector3(Random.Range(-9,9), transform.position.y, 0);
         }
     }
 }
