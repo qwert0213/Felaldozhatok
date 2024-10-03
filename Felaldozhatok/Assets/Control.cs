@@ -8,7 +8,11 @@ public class Control : MonoBehaviour
     public bool controllable = false;
     public bool goLeft = true;
     public bool goRight = true;
+<<<<<<< Updated upstream
     public GameObject playerAttack;  // A lövedék prefabje
+=======
+    public GameObject playerAttack; // A lövedék prefabje
+>>>>>>> Stashed changes
     public GameObject player;
     public float attackRate = 1;
     public float elapsedTime = 0;
@@ -17,6 +21,10 @@ public class Control : MonoBehaviour
     private int upgradedProjectileSpeed = 0;
     private int upgradedDamage = 0;
 
+<<<<<<< Updated upstream
+=======
+    // Start is called before the first frame update
+>>>>>>> Stashed changes
     void Start()
     {
         
@@ -38,7 +46,11 @@ public class Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && attackRate < elapsedTime)
             {
                 GameObject newProjectile = Instantiate(playerAttack, new Vector3(transform.position.x + 3, transform.position.y + 7, 0), transform.rotation);
+<<<<<<< Updated upstream
                 
+=======
+
+>>>>>>> Stashed changes
                 // Átadjuk a fejlesztéseket a lövedéknek
                 PlayerAttack attackComponent = newProjectile.GetComponent<PlayerAttack>();
                 attackComponent.UpgradeProjectileSpeed(upgradedProjectileSpeed);
@@ -63,4 +75,8 @@ public class Control : MonoBehaviour
     {
         upgradedDamage += extraDamage;
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }

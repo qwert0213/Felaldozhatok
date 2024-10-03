@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public int travelSpeed = 10; // A lÃ¶vedÃ©k sebessÃ©ge
     public int damage = 1;       // A lÃ¶vedÃ©k alapÃ©rtelmezett sebzÃ©se
     public EnemyLogic enemyLogic;
 
+=======
+    public int travelSpeed = 10;
+    public int damage = 1;
+    public EnemyLogic enemyLogic;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -35,15 +41,27 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     // SebzÃ©s nÃ¶velÃ©se
+=======
+    // Sebzés növelése
+>>>>>>> Stashed changes
     public void UpgradeDamage(int extraDamage)
     {
         damage += extraDamage;
     }
 
+<<<<<<< Updated upstream
     // LÃ¶vedÃ©k sebessÃ©gÃ©nek nÃ¶velÃ©se
+=======
+    // Lövedék sebességének növelése
+>>>>>>> Stashed changes
     public void UpgradeProjectileSpeed(int extraSpeed)
     {
         travelSpeed += extraSpeed;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
