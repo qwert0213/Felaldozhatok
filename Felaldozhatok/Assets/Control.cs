@@ -8,10 +8,15 @@ public class Control : MonoBehaviour
     public bool controllable = false;
     public bool goLeft = true;
     public bool goRight = true;
-    public GameObject playerAttack;
+    public GameObject playerAttack; // A lövedék prefabje
     public GameObject player;
     public float attackRate = 1;
     public float elapsedTime = 0;
+
+    // Lövedék sebesség és sebzés fejlesztésének nyomon követése
+    private int upgradedProjectileSpeed = 0;
+    private int upgradedDamage = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +39,13 @@ public class Control : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) && attackRate < elapsedTime)
             {
-                Instantiate(playerAttack, new Vector3(transform.position.x+3, transform.position.y+7, 0), transform.rotation);
+                GameObject newProjectile = Instantiate(playerAttack, new Vector3(transform.position.x + 3, transform.position.y + 7, 0), transform.rotation);
+
+                // Átadjuk a fejlesztéseket a lövedéknek
+                PlayerAttack attackComponent = newProjectile.GetComponent<PlayerAttack>();
+                attackComponent.UpgradeProjectileSpeed(upgradedProjectileSpeed);
+                attackComponent.UpgradeDamage(upgradedDamage);
+
                 elapsedTime = 0;
             }
             else
@@ -43,6 +54,17 @@ public class Control : MonoBehaviour
             }
         }
 
+    }
+
+    // Fejlesztések kezelése
+    public void UpgradeProjectileSpeed(int extraSpeed)
+    {
+        upgradedProjectileSpeed += extraSpeed;
+    }
+
+    public void UpgradeDamage(int extraDamage)
+    {
+        upgradedDamage += extraDamage;
     }
 
 }

@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public int travelSpeed = 10;
     public int damage = 1;
+    public EnemyLogic enemyLogic;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,17 @@ public class PlayerAttack : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    // Sebzés növelése
+    public void UpgradeDamage(int extraDamage)
+    {
+        damage += extraDamage;
+    }
+
+    // Lövedék sebességének növelése
+    public void UpgradeProjectileSpeed(int extraSpeed)
+    {
+        travelSpeed += extraSpeed;
     }
 }

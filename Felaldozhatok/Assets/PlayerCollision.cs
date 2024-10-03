@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerCollision : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
     public Control control;
     public AudioSource damageTaken;
     public Text gameOver;
@@ -19,7 +20,7 @@ public class PlayerCollision : MonoBehaviour
     {
         control = GameObject.Find("Player").GetComponent<Control>();
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        health = 3;
+        health = maxHealth = 3;
         damageTaken = GameObject.Find("Damage").GetComponent<AudioSource>();
         playerStats = GameObject.Find("EnemyManager").GetComponent<PlayerStats>();
         gameOver.enabled = false;
@@ -59,6 +60,14 @@ public class PlayerCollision : MonoBehaviour
             control.goRight = false;
         }
     }
+
+    // Maximális életerő növelése
+    public void UpgradeMaxHealth(int extraHealth)
+    {
+        maxHealth += extraHealth;
+        health = maxHealth; // Frissítjük az aktuális életerőt a maximálisra
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "wallLeft")
