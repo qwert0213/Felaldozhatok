@@ -68,10 +68,13 @@ public class EnemyManager : MonoBehaviour
 
     public void ModifyTxt()
     {
+        // A fájl elérési útja a buildelt játékban
+        string filePath = Application.dataPath + "/Resources/score.txt";
+
         if (playerStats.score > scoreContent)
         {
-            System.IO.File.WriteAllText(AssetDatabase.GetAssetPath(scoreFile), playerStats.score.ToString());
-            EditorUtility.SetDirty(scoreFile);
+            // Írjuk át a fájlt, ha a játékos pontszáma nagyobb, mint az aktuális tartalom
+            System.IO.File.WriteAllText(filePath, playerStats.score.ToString());
         }
     }
 

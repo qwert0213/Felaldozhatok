@@ -9,10 +9,10 @@ public class HealthDisplay : MonoBehaviour
     public GameObject heartPrefab; // Szív prefab
     public Transform heartsParent; // HeartsContainer GameObject (UI elem)
 
-    private List<GameObject> hearts = new List<GameObject>(); // A szívek tárolása
+    public List<GameObject> hearts = new List<GameObject>(); // A szívek tárolása
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         UpdateHearts();
     }
@@ -28,7 +28,7 @@ public class HealthDisplay : MonoBehaviour
     }
 
     // A szívek frissítése a játékos életerejéhez igazodva
-    void UpdateHearts()
+    public void UpdateHearts()
     {
         // Ha több szív van, mint a jelenlegi életerő, akkor a lista legelső szívét töröljük
         if (hearts.Count > playerCollision.health)
