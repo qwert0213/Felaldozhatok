@@ -10,7 +10,7 @@ public class UpgradeShop : MonoBehaviour
     public PlayerCollision playerCollision; // A játékos életerejének kezelése
     public Text feedbackText; // Visszajelzés megjelenítése
 
-    void Start()
+    public void Start()
     {
         control = player.GetComponent<Control>();
 

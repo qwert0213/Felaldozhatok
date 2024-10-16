@@ -12,37 +12,29 @@ public class HealthDisplayTests
     [SetUp]
     public void SetUp()
     {
-        // Létrehozzuk a szükséges GameObject-eket
+        // Létrehozzuk a Player GameObject-et és hozzáadjuk a PlayerCollision scriptet
         player = new GameObject("Player");
         playerCollision = player.AddComponent<PlayerCollision>();
         playerCollision.health = 3; // Kezdő életerő
         playerCollision.maxHealth = 3; // Maximális életerő
 
-        // Létrehozzuk a HealthDisplay GameObject-et
-        healthDisplay = new GameObject("HealthDisplay").AddComponent<HealthDisplay>();
+        // Létrehozzuk a HeartsContainer GameObject-et, amelynek RectTransform-ja és HealthDisplay scriptje is lesz
+        heartsParent = new GameObject("HeartsContainer", typeof(RectTransform));
+
+        // Hozzáadjuk a HealthDisplay komponenst a HeartsContainer GameObject-hez
+        healthDisplay = heartsParent.AddComponent<HealthDisplay>();
 
         // Létrehozzuk a szív prefab-et
-        heartsParent = new GameObject("HeartsParent");
-        healthDisplay.heartsParent = heartsParent.transform;
-
-        // Létrehozzuk a szív prefab-et (egyszerű UI elem)
         GameObject heartPrefab = new GameObject("Heart");
-        heartPrefab.AddComponent<Image>(); // Hozzáadunk egy Image komponenst
+        heartPrefab.AddComponent<Image>(); // Hozzáadunk egy Image komponenst, hogy UI elemként működjön
 
+        // Beállítjuk a HealthDisplay script változóit
+        healthDisplay.heartsParent = heartsParent.transform;
         healthDisplay.heartPrefab = heartPrefab;
         healthDisplay.playerCollision = playerCollision;
 
         // Inicializáljuk a HealthDisplay-t
         healthDisplay.Start();
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        // Töröljük a GameObject-eket
-        Object.DestroyImmediate(player);
-        Object.DestroyImmediate(healthDisplay.gameObject);
-        Object.DestroyImmediate(heartsParent);
     }
 
     [Test]
@@ -61,5 +53,13 @@ public class HealthDisplayTests
 
         // Assert
         Assert.AreEqual(4, healthDisplay.hearts.Count); // Ellenőrizzük, hogy a szívek száma 4 legyen
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        // Töröljük a GameObject-eket
+        Object.DestroyImmediate(player);
+        Object.DestroyImmediate(heartsParent);
     }
 }

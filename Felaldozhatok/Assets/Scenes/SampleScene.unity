@@ -175,6 +175,8 @@ MonoBehaviour:
   player: {fileID: 0}
   attackRate: 1
   elapsedTime: 0
+  upgradedProjectileSpeed: 0
+  upgradedDamage: 0
 --- !u!1 &27601581
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.97735846, g: 0.9349448, b: 0.9349448, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2448,7 +2450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.97735846, g: 0.96444994, b: 0.96444994, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3057,6 +3059,7 @@ MonoBehaviour:
   playerCollision: {fileID: 930188331}
   heartPrefab: {fileID: 4060962907060595164, guid: d8f718e64836fca4e941add0d9553eac, type: 3}
   heartsParent: {fileID: 1856768111}
+  hearts: []
 --- !u!222 &1856768113
 CanvasRenderer:
   m_ObjectHideFlags: 0

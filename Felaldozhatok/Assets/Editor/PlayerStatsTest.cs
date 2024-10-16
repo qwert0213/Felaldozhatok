@@ -11,12 +11,6 @@ public class PlayerStatsTests
         playerStats = new GameObject().AddComponent<PlayerStats>();
     }
 
-    [TearDown]
-    public void TearDown()
-    {
-        Object.DestroyImmediate(playerStats.gameObject);
-    }
-
     [Test]
     public void AddMoney_IncreasesMoneyCorrectly()
     {
@@ -43,5 +37,11 @@ public class PlayerStatsTests
 
         // Assert
         Assert.AreEqual(initialScore + scoreToAdd, playerStats.score);
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        Object.DestroyImmediate(playerStats.gameObject);
     }
 }

@@ -14,8 +14,8 @@ public class Control : MonoBehaviour
     public float elapsedTime = 0;
 
     // Lövedék sebesség és sebzés fejlesztésének nyomon követése
-    private int upgradedProjectileSpeed = 0;
-    private int upgradedDamage = 0;
+    public int upgradedProjectileSpeed = 0;
+    public int upgradedDamage = 0;
 
     // Start is called before the first frame update
     void Start()
