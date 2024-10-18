@@ -5,6 +5,6 @@ public class FullScreen : MonoBehaviour
     void Start()
     {
         // Toggle fullscreen
-        Screen.fullScreen = !Screen.fullScreen;
+        Screen.fullScreen = true;
     }
 }
