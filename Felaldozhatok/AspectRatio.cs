@@ -30,8 +30,8 @@ public partial class AspectRatioElement : VisualElement
     }
 
     // Padding elements to keep the aspect ratio.
-    private int _ratioWidth = 16;
-    private int _ratioHeight = 9;
+    private int _ratioWidth = 12;
+    private int _ratioHeight = 16;
 
     public AspectRatioElement()
     {
