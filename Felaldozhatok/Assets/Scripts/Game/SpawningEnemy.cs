@@ -8,6 +8,8 @@ public class SpawningEnemy : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject boss1;
+    public GameObject asteroid1;
+    public GameObject wreck1;
     public float spawnRate = 3; // Spawn sebessége másodpercenként
     public float elapsedTime = 2; // Elapsed time for spawning
    // public int health = 1; // Az ellenség egészsége
@@ -63,6 +65,14 @@ public class SpawningEnemy : MonoBehaviour
     public void SpawnBoss1()
     {
         SpawnNewEnemy(boss1);
+    }
+    public void SpawnAsteroid()
+    {
+        SpawnNewEnemy(asteroid1);
+    }
+    public void SpawnWreck()
+    {
+        SpawnNewEnemy(wreck1);
     }
     public void SpawnNewEnemy(GameObject enemy) { 
         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-9, 9), transform.position.y, 0), transform.rotation);

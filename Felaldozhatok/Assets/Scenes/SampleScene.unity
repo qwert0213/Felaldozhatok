@@ -2406,6 +2406,8 @@ MonoBehaviour:
   enemy2: {fileID: 4656842617193354302, guid: 6775973657ab0ed429e3260b7cb5fc56, type: 3}
   enemy3: {fileID: 4656842617193354302, guid: 04d0cf2ca8fce1341927af4dec864cfe, type: 3}
   boss1: {fileID: 1163161024552650291, guid: 1824832fd47a64c43bd519e947c13fa3, type: 3}
+  asteroid1: {fileID: 7972740198911916915, guid: cfd917d3563b9f54bb9dbbe3eb316e30, type: 3}
+  wreck1: {fileID: 8287491164237547454, guid: c46180cf151daa64f83c38292f922262, type: 3}
   spawnRate: 3
   elapsedTime: 0
   control: {fileID: 3220038}

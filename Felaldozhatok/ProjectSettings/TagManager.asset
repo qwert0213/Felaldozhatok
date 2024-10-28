@@ -13,6 +13,9 @@ TagManager:
   - enemy1
   - enemy2
   - enemy3
+  - boss1
+  - asteroid
+  - wreck
   layers:
   - Default
   - TransparentFX

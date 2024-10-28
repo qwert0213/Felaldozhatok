@@ -51,6 +51,18 @@ public class PlayerCollision : MonoBehaviour
             playerStats.AddScore(-20);
             health -= 1;
         }
+        if (other.gameObject.tag == "asteroid")
+        {
+            damageTaken.Play();
+            playerStats.AddScore(-20);
+            health -= 1;
+        }
+        if (other.gameObject.tag == "wreck")
+        {
+            damageTaken.Play();
+            playerStats.AddScore(-20);
+            health -= 1;
+        }
         if (other.gameObject.tag == "wallLeft")
         {
             control.goLeft = false;
