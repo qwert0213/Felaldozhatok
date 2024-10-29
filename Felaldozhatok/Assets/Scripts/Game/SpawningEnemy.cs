@@ -25,7 +25,10 @@ public class SpawningEnemy : MonoBehaviour
         control = GameObject.Find("Player").GetComponent<Control>();
         // A maximális ellenségek számának beállítása az EnemyManager-ben
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+    }
+    public void ReportMaxEnemies() {
         enemyManager.SetMaxEnemies(maxEnemies);
+        enemyCount = 0;
     }
 
     // Update is called once per frame

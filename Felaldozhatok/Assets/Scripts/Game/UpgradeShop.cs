@@ -9,11 +9,12 @@ public class UpgradeShop : MonoBehaviour
     private Control control; // A játékos vezérlése
     public PlayerCollision playerCollision; // A játékos életerejének kezelése
     public Text feedbackText; // Visszajelzés megjelenítése
+    public Level1 level1;
 
     public void Start()
     {
         control = player.GetComponent<Control>();
-
+        level1 = GameObject.Find("Logic").GetComponent<Level1>();
         // Keressük meg a rocket GameObjectet a Player alatt
         GameObject rocket = GameObject.Find("rocket");
         if (rocket != null)
@@ -105,5 +106,6 @@ public class UpgradeShop : MonoBehaviour
     public void ExitShop()
     {
         gameObject.SetActive(false); // Az Upgrade Shop bezárása
+        level1.StartLevel();
     }
 }

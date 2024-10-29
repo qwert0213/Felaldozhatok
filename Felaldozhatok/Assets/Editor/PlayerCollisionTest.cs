@@ -34,9 +34,9 @@ public class PlayerCollisionTest
         playerCollision.damageTaken = damageTakenAudio;
 
         // GameOver UI Text beállítása
-        var gameOverTextObj = new GameObject("GameOverText");
-        playerCollision.gameOver = gameOverTextObj.AddComponent<Text>();
-        playerCollision.gameOver.enabled = false;  // Kezdetben inaktív
+        //var gameOverTextObj = new GameObject("GameOverText");
+        //playerCollision.gameOver = gameOverTextObj.AddComponent<Text>();
+        //playerCollision.gameOver.enabled = false;  // Kezdetben inaktív
 
         // Létrehozzuk az ellenség lövedékét
         enemyProjectile = new GameObject("EnemyProjectile");

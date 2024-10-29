@@ -18,6 +18,10 @@ public class Boss1Logic : EnemyLogic
     // Update is called once per frame
     void Update()
     {
+        if (playerCollision.health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         if (health <= 0)
         {
 

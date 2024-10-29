@@ -8,9 +8,11 @@ using UnityEngine.Windows;
 using System;
 using UnityEditor;
 using UnityEngine.TextCore.Text;
+using Unity.VisualScripting;
 public class EnemyManager : MonoBehaviour
 {
     public Text missionText; // A felirat megjelenítéséhez
+    public Text gameCompleteText; 
     public Text moneyText; // A pénz kijelzéséhez
     public GameObject upgradeShopUI; // Referencia az Upgrade Shop UI-ra
     public int enemiesKilled = 0; // A megölt ellenségek száma
@@ -19,6 +21,9 @@ public class EnemyManager : MonoBehaviour
     public PlayerStats playerStats;
     public UnityEngine.TextAsset scoreFile;
     public int scoreContent;
+    public Level1 level1;
+    public PlayerCollision playerCollision;
+    
     void Awake()
     {
         // Singleton biztosítása
@@ -31,20 +36,42 @@ public class EnemyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     // A maximális ellenségszám beállítása (a SpawningEnemy.cs-ből hívjuk meg)
     public void SetMaxEnemies(int max)
     {
         maxEnemies = max;
+        enemiesKilled = 0;
     }
 
     // Az ellenségek halálának kezelése
     public void EnemyKilled()
     {
         enemiesKilled++;
-        if (enemiesKilled == maxEnemies) // Csak akkor írja ki, ha az összes spawnolt ellenség meghalt
+        if (enemiesKilled == maxEnemies && playerCollision.health > 0) // Csak akkor írja ki, ha az összes spawnolt ellenség meghalt
         {
-            StartCoroutine(MissionSuccessRoutine()); // Elindítjuk a küldetés sikerességét kezelő rutint
+            if (level1.levelCounter == 2)
+            {
+                ModifyTxt();
+                if (scoreContent < playerStats.score)
+                {
+                    gameCompleteText.text = $"Victory Royale!\nNew high score: {playerStats.score}\nCongratulations!";
+                }
+                else
+                if (scoreContent == playerStats.score)
+                {
+                    gameCompleteText.text = $"Victory Royale!\nYou hit your last high score: {playerStats.score}";
+                }
+                else
+                {
+                    gameCompleteText.text = $"Victory Royale!\nYour score: {playerStats.score}\nHigh score: {scoreContent}\nTry harder next time.";
+                }
+            }
+            else
+            {
+                StartCoroutine(MissionSuccessRoutine()); // Elindítjuk a küldetés sikerességét kezelő rutint
+            }
+            
         }
     }
 
@@ -56,7 +83,8 @@ public class EnemyManager : MonoBehaviour
         ModifyTxt();
         yield return new WaitForSeconds(3); // Várunk 3 másodpercet
         missionText.text = ""; // Felirat eltüntetése
-
+        level1.levelPlayable = false;
+        enemiesKilled = 0;
         OpenUpgradeShop(); // Upgrade Shop megnyitása
     }
 
@@ -81,12 +109,14 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         playerStats = GameObject.Find("EnemyManager").GetComponent<PlayerStats>();
-        scoreContent = int.Parse(scoreFile.text);
+        level1 = GameObject.Find("Logic").GetComponent<Level1>();
+        playerCollision = GameObject.Find("rocket").GetComponent<PlayerCollision>();
     }
 
     // Update - minden képkockánál frissítjük a pénz kijelzést
     void Update()
     {
         moneyText.text = "Money: " + PlayerStats.instance.money;
+        scoreContent = int.Parse(scoreFile.text);
     }
 }

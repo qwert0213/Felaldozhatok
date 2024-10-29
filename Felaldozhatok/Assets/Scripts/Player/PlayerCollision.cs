@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
     public int maxHealth;
     public Control control;
     public AudioSource damageTaken;
-    public Text gameOver;
+    public GameObject gameOver;
     public float wait = 0;
     public EnemyManager enemyManager;
     public PlayerStats playerStats;
@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
         health = maxHealth = 3;
         damageTaken = GameObject.Find("Damage").GetComponent<AudioSource>();
         playerStats = GameObject.Find("EnemyManager").GetComponent<PlayerStats>();
-        gameOver.enabled = false;
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,8 +32,8 @@ public class PlayerCollision : MonoBehaviour
         if (health == 0)
         {
             enemyManager.ModifyTxt();
+            gameOver.SetActive(true);
             control.controllable = false;
-            gameOver.enabled = true;
             wait += Time.deltaTime;
             if (wait > 1)
             {
