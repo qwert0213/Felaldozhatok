@@ -8,6 +8,7 @@ public class EnemyLogic : MonoBehaviour
     public PlayerAttack playerAttack;
     public AudioSource damageTaken;
     public PlayerCollision playerCollision;
+    public Control control;
     void Awake()
     {
         playerCollision = GameObject.Find("rocket").GetComponent<PlayerCollision>();

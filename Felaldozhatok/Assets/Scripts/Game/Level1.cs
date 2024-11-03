@@ -13,6 +13,7 @@ public class Level1 : MonoBehaviour
     public List<int> level3Spawns;
     public List<int> level4Spawns;
     public List<int> level5Spawns;
+    public List<List<int>> spawn;
     public AudioSource bossFight;
     public int levelCounter = 0;
     public bool levelPlayable = false;
@@ -22,43 +23,31 @@ public class Level1 : MonoBehaviour
         spawner = GameObject.Find("Spawner").GetComponent<SpawningEnemy>();
         control = GameObject.Find("Player").GetComponent<Control>();
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        level1Spawns = new List<int> { 1 };
-        level2Spawns = new List<int> { 4, 4};
-        level3Spawns = new List<int> { 4, 4 };
-        level4Spawns = new List<int> { 4, 4 };
-        level5Spawns = new List<int> { 4, 4 };
+        level1Spawns = new List<int> { 1, 1, 1, 99 };
+        level2Spawns = new List<int> { 4, 4, 4, 4, 4, 4};
+        level3Spawns = new List<int> { 2, 2, 2, 2, 199 };
+        level4Spawns = new List<int> { 5, 5, 5, 5, 5, 5, 5};
+        level5Spawns = new List<int> { 3, 299 };
+        spawn = new List<List<int>> { level1Spawns, level2Spawns, level3Spawns, level4Spawns, level5Spawns };
         spawns = new List<int> { };
         bossFight = GameObject.Find("BossFight").GetComponent<AudioSource>();
 
     }
     public void LevelSet()
     {
-        if (levelCounter == 1)
-        {
-            spawns = level1Spawns;
-            spawner.maxEnemies = level1Spawns.Count;
-            spawner.ReportMaxEnemies();
-        }
-        if (levelCounter == 2)
-        {
-            spawns = level2Spawns;
-            spawner.maxEnemies = level2Spawns.Count;
-            spawner.ReportMaxEnemies();
-        }
-        if (levelCounter == 3)
-        {
-            
-        }
+        spawns = spawn[levelCounter-1];
+        spawner.maxEnemies = spawns.Count;
+        spawner.ReportMaxEnemies();
     }
     // Update is called once per frame
     void Update()
     {
-        if (spawner.canSpawn && levelPlayable)
+        if (spawner.canSpawn && levelPlayable && spawner.enemyCount != spawns.Count)
         {
             if (spawns[spawner.enemyCount] == 1)
             {
                 spawner.SpawnEnemy1();
-                spawner.spawnRate = 3;
+                spawner.spawnRate = 2;
                 EnemySpawned();
             }
             else
@@ -66,6 +55,7 @@ public class Level1 : MonoBehaviour
                 if (spawns[spawner.enemyCount] == 2)
                 {
                     spawner.SpawnEnemy2();
+                    spawner.spawnRate = 2;
                     EnemySpawned();
                 }
                 else
@@ -73,6 +63,7 @@ public class Level1 : MonoBehaviour
                     if (spawns[spawner.enemyCount] == 3)
                     {
                         spawner.SpawnEnemy3();
+                        spawner.spawnRate = 2;
                         EnemySpawned();
                     }
                     else
@@ -96,9 +87,31 @@ public class Level1 : MonoBehaviour
                                 if (spawns[spawner.enemyCount] == 99 && enemyManager.enemiesKilled == spawner.maxEnemies - 1)
                                 {
                                     bossFight.Play();
+                                    spawner.spawnRate = 1;
                                     spawner.SpawnBoss1();
                                     EnemySpawned();
                                 }
+                                else
+                                {
+                                    if (spawns[spawner.enemyCount] == 199 && enemyManager.enemiesKilled == spawner.maxEnemies - 1)
+                                    {
+                                        bossFight.Play();
+                                        spawner.spawnRate = 1;
+                                        spawner.SpawnBoss2();
+                                        EnemySpawned();
+                                    }
+                                    else
+                                    {
+                                        if (spawns[spawner.enemyCount] == 299 && enemyManager.enemiesKilled == spawner.maxEnemies - 1)
+                                        {
+                                            bossFight.Play();
+                                            spawner.spawnRate = 1;
+                                            spawner.SpawnBoss3();
+                                            EnemySpawned();
+                                        }
+                                    }
+                                }
+                                
                             }
                         }
                     }

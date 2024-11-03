@@ -16,6 +16,8 @@ TagManager:
   - boss1
   - asteroid
   - wreck
+  - boss2
+  - boss3
   layers:
   - Default
   - TransparentFX

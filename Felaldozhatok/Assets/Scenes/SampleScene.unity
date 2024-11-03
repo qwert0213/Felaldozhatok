@@ -2206,8 +2206,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7656457, y: 4.607529, z: 0.2}
-  m_Center: {x: -0.046589293, y: 0.023295162, z: 0}
+  m_Size: {x: 1.6522229, y: 4.6075344, z: 0.2}
+  m_Center: {x: -0.086509, y: 0.023295125, z: 0}
 --- !u!114 &930188331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2673,6 +2673,8 @@ MonoBehaviour:
   enemy2: {fileID: 4656842617193354302, guid: 6775973657ab0ed429e3260b7cb5fc56, type: 3}
   enemy3: {fileID: 4656842617193354302, guid: 04d0cf2ca8fce1341927af4dec864cfe, type: 3}
   boss1: {fileID: 1163161024552650291, guid: 1824832fd47a64c43bd519e947c13fa3, type: 3}
+  boss2: {fileID: 1163161024552650291, guid: ec424da56ed636347a2cfb2943117b10, type: 3}
+  boss3: {fileID: 1163161024552650291, guid: 9985dacc499cfbd46ad0d752753e6c83, type: 3}
   asteroid1: {fileID: 7972740198911916915, guid: cfd917d3563b9f54bb9dbbe3eb316e30, type: 3}
   wreck1: {fileID: 8287491164237547454, guid: c46180cf151daa64f83c38292f922262, type: 3}
   spawnRate: 3

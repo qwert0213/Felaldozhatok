@@ -50,7 +50,7 @@ public class EnemyManager : MonoBehaviour
         enemiesKilled++;
         if (enemiesKilled == maxEnemies && playerCollision.health > 0) // Csak akkor írja ki, ha az összes spawnolt ellenség meghalt
         {
-            if (level1.levelCounter == 2)
+            if (level1.levelCounter == 5)
             {
                 ModifyTxt();
                 if (scoreContent < playerStats.score)

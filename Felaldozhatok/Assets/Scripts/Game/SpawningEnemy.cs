@@ -8,6 +8,8 @@ public class SpawningEnemy : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject boss1;
+    public GameObject boss2;
+    public GameObject boss3;
     public GameObject asteroid1;
     public GameObject wreck1;
     public float spawnRate = 3; // Spawn sebessége másodpercenként
@@ -68,6 +70,14 @@ public class SpawningEnemy : MonoBehaviour
     public void SpawnBoss1()
     {
         SpawnNewEnemy(boss1);
+    }
+    public void SpawnBoss2()
+    {
+        SpawnNewEnemy(boss2);
+    }
+    public void SpawnBoss3()
+    {
+        SpawnNewEnemy(boss3);
     }
     public void SpawnAsteroid()
     {
