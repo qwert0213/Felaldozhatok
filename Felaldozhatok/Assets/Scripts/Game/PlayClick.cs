@@ -9,9 +9,11 @@ public class PlayClick : MonoBehaviour
     public Button playButton;
     public Control control;
     public GameObject menu;
+    public Level1 level1;
     // Start is called before the first frame update
     void Start()
     {
+        level1 = GameObject.Find("Logic").GetComponent<Level1>();
         Button btn = playButton.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
         control = GameObject.Find("Player").GetComponent<Control>();
@@ -25,5 +27,6 @@ public class PlayClick : MonoBehaviour
     public void OnClick() {
         menu.SetActive(false);
         control.controllable = true;
+        level1.StartLevel();
     }
 }

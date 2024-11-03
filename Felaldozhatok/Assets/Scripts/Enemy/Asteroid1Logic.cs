@@ -27,8 +27,8 @@ public class AsteroidCollision : MonoBehaviour
     {
         if (transform.position.y < -18)
         {
-            PlayerStats.instance.AddMoney(20);
-            PlayerStats.instance.AddScore(20);
+            PlayerStats.instance.AddMoney(10);
+            PlayerStats.instance.AddScore(10);
             enemyManager.EnemyKilled();
             Destroy(this.gameObject);
         }

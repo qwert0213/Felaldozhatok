@@ -32,7 +32,6 @@ public class EnemyAttack : MonoBehaviour
                 elapsedTime = 0;
             }
         }
-
     }
     public virtual void Shoot() { }
     public virtual void SetAttackRate() { }

@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "enemy1" || other.gameObject.tag == "enemy2" || other.gameObject.tag == "enemy3" || other.gameObject.tag == "boss1")
+        if (other.gameObject.tag == "enemy1" || other.gameObject.tag == "enemy2" || other.gameObject.tag == "enemy3" || other.gameObject.tag == "boss1" || other.gameObject.tag == "boss2" | other.gameObject.tag == "boss3")
         {
             Destroy(this.gameObject);
         }

@@ -7,6 +7,12 @@ public class EnemyLogic : MonoBehaviour
     public int health;
     public PlayerAttack playerAttack;
     public AudioSource damageTaken;
+    public PlayerCollision playerCollision;
+    public Control control;
+    void Awake()
+    {
+        playerCollision = GameObject.Find("rocket").GetComponent<PlayerCollision>();
+    }
 
     void Update()
     {
@@ -18,7 +24,6 @@ public class EnemyLogic : MonoBehaviour
         }
         playerAttack = GameObject.FindGameObjectWithTag("playerAttack").GetComponent<PlayerAttack>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "playerAttack")

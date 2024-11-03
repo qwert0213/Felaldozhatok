@@ -26,7 +26,6 @@ public class Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (controllable)
         {
             if (Input.GetKey(KeyCode.A)&&goLeft)

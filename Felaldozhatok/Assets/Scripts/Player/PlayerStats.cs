@@ -29,5 +29,9 @@ public class PlayerStats : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        if (score < 0)
+        {
+            score = 0;
+        }
     }
 }
