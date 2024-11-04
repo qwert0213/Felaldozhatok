@@ -28,9 +28,12 @@ public class EnemyLogic : MonoBehaviour
     {
         if (other.gameObject.tag == "playerAttack")
         {
-            health -= playerAttack.damage;
+            // Az ütköző lövedék PlayerAttack komponensének lekérése
+            PlayerAttack currentAttack = other.gameObject.GetComponent<PlayerAttack>();
+            health -= currentAttack.damage; // Az aktuális lövedék sebzésének levonása
             damageTaken.Play();
-            transform.position = new Vector3(Random.Range(-9,9), transform.position.y, 0);
+            transform.position = new Vector3(Random.Range(-9, 9), transform.position.y, 0);
         }
     }
+
 }
