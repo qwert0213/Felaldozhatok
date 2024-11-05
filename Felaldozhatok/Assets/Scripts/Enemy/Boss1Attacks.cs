@@ -40,7 +40,7 @@ public class Boss1Attacks : EnemyAttack
     }
     public override void SetAttackRate()
     {
-        attackRate = 3;
+        attackRate = 2;
     }
     public override void SetAttackSound() { 
         attackSound = GameObject.Find("SpellCast").GetComponent<AudioSource>();

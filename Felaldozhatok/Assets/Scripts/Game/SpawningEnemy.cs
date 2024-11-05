@@ -7,6 +7,9 @@ public class SpawningEnemy : MonoBehaviour
     public GameObject enemy1; // Az ellenség prefab
     public GameObject enemy2;
     public GameObject enemy3;
+    public GameObject enemy4;
+    public GameObject enemy5;
+    public GameObject enemy6;
     public GameObject boss1;
     public GameObject boss2;
     public GameObject boss3;
@@ -66,6 +69,18 @@ public class SpawningEnemy : MonoBehaviour
     public void SpawnEnemy3()
     {
         SpawnNewEnemy(enemy3);
+    }
+    public void SpawnEnemy4()
+    {
+        SpawnNewEnemy(enemy4);
+    }
+    public void SpawnEnemy5()
+    {
+        SpawnNewEnemy(enemy5);
+    }
+    public void SpawnEnemy6()
+    {
+        SpawnNewEnemy(enemy6);
     }
     public void SpawnBoss1()
     {
