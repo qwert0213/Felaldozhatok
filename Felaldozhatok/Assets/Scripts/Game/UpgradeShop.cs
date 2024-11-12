@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class UpgradeShop : MonoBehaviour
 {
     public GameObject player; // Referencia a játékosra
+    public GameObject storypanel; // Referencia a story panelre
     private Control control; // A játékos vezérlése
     public PlayerCollision playerCollision; // A játékos életerejének kezelése
     public Text feedbackText; // Visszajelzés megjelenítése
+    public Text charactername; // A karakternév megjelenítéséhez
+    public Text message; // Az üzenet megjelenítéséhez
     public Level1 level1;
 
     public void Start()
@@ -108,4 +111,14 @@ public class UpgradeShop : MonoBehaviour
         gameObject.SetActive(false); // Az Upgrade Shop bezárása
         level1.StartLevel();
     }
+
+    /*public IEnumerator StoryText()
+    {
+        if (level1.levelCounter == 1) { storypanel.SetActive(true); } // Az story panel aktiválása
+
+        // Várakozás a Space gomb lenyomására
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        storypanel.SetActive(false); // Az story panel deaktiválása
+    }*/
 }

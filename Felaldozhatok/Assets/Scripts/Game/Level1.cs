@@ -1,12 +1,17 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level1 : MonoBehaviour
 {
     public SpawningEnemy spawner;
     public EnemyManager enemyManager;
     public Control control;
+    public GameObject introtext;
+    public GameObject storypanel;
+    public Text charactername; // A karakternév megjelenítéséhez
+    public Text message; // Az üzenet megjelenítéséhez
     public List<int> spawns;
     public List<int> level1Spawns;
     public List<int> level2Spawns;
@@ -152,12 +157,32 @@ public class Level1 : MonoBehaviour
         spawner.canSpawn = false;
         spawner.elapsedTime = 0;
     }
-    public void StartLevel()
+    public IEnumerator StartLevel()
     {
+        if (levelCounter == 0) { introtext.SetActive(true); } // Az intro szöveg aktiválása
+
+        // Várakozás az Enter gomb lenyomására
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        introtext.SetActive(false); // Az intro szöveg deaktiválása
+        yield return new WaitForSeconds(0.1f); // Várunk egy kicsit
+        yield return StoryText();
         levelPlayable = true;
         levelCounter++;
         LevelSet();
     }
+
+    public IEnumerator StoryText()
+    {
+        storypanel.SetActive(true); // Az story panel aktiválása
+        message.text = "Itt Winters hadnagy a főparancsnokságról. Orion, figyelj, ez fontos. Nemrég elfogtunk egy rövid, kódolt adást az Onyxoktól. Az üzenet töredékes volt, de sikerült kihámozni belőle valami érdekeset. Úgy tűnik, koordinátákat küldtek a műveleti pontukhoz. Még nem tudjuk, pontosan mi vár ott, de nem szeretnénk, ha meglepnének minket. Te vagy az egyetlen, akiben teljesen megbízom ehhez a feladathoz. Menj a megadott koordinátákra, derítsd ki, mit terveznek, és jelents vissza, amint lehet. Tudom, hogy rádbízhatjuk ezt. Winters, vége.";
+        charactername.text = "Winters hadnagy";
+        // Várakozás az Enter gomb lenyomására
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        storypanel.SetActive(false); // Az story panel deaktiválása
+    }
+
 }
 
 /*using System.Collections;

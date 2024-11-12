@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -27,6 +27,6 @@ public class PlayClick : MonoBehaviour
     public void OnClick() {
         menu.SetActive(false);
         control.controllable = true;
-        level1.StartLevel();
+        level1.StartCoroutine(level1.StartLevel());
     }
 }
