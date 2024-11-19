@@ -106,19 +106,54 @@ public class UpgradeShop : MonoBehaviour
     }
 
     // Kilépés az Upgrade Shopból
-    public void ExitShop()
+    public IEnumerator ExitShop()
     {
         gameObject.SetActive(false); // Az Upgrade Shop bezárása
+        if (level1.levelCounter == 1) { yield return MissionBrief2(); }
+        else if (level1.levelCounter == 2) { yield return MissionBrief3(); }
+        else if (level1.levelCounter == 3) { yield return MissionBrief4(); }
+        else { yield return MissionBrief5(); }
         level1.StartLevel();
     }
 
-    /*public IEnumerator StoryText()
+    public IEnumerator MissionBrief2()
     {
-        if (level1.levelCounter == 1) { storypanel.SetActive(true); } // Az story panel aktiválása
-
-        // Várakozás a Space gomb lenyomására
+        storypanel.SetActive(true); // Az story panel aktiválása
+        message.text = "Figyelem! Nagy koncentrációjú idegen objektumok észlelve! Kitérő manőverekre felkészülni!";
+        charactername.text = "Rendszerüzenet";
+        // Várakozás az Enter gomb lenyomására
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 
         storypanel.SetActive(false); // Az story panel deaktiválása
-    }*/
+    }
+    public IEnumerator MissionBrief3()
+    {
+        storypanel.SetActive(true); // Az story panel aktiválása
+        message.text = "Itt Winters hadnagy. Orion, a tudósok kielemezték az Erebus Állomáson talált adatokat, és valami egészen döbbenetesre bukkantunk. Úgy tűnik, az emberiség a múltban kifejlesztett egy bolygótörő fegyvert – egy olyan eszközt, ami képes teljes planétákat megsemmisíteni. Az okok, hogy miért merült feledésbe, egyelőre homályosak, de egy dolog világos: az Onyxok most valahogy tudomást szereztek róla, és talán ezért kezdték el a támadásaikat. Nem engedhetjük meg, hogy ez a fegyver a kezükbe kerüljön. Orion, tudod mit kell tenned. Winters, vége.";
+        charactername.text = "Winters hadnagy";
+        // Várakozás az Enter gomb lenyomására
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        storypanel.SetActive(false); // Az story panel deaktiválása
+    }
+    public IEnumerator MissionBrief4()
+    {
+        storypanel.SetActive(true); // Az story panel aktiválása
+        message.text = "Figyelem! Nagy koncentrációjú idegen objektumok észlelve! Kitérő manőverekre felkészülni!";
+        charactername.text = "Rendszerüzenet";
+        // Várakozás az Enter gomb lenyomására
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        storypanel.SetActive(false); // Az story panel deaktiválása
+    }
+    public IEnumerator MissionBrief5()
+    {
+        storypanel.SetActive(true); // Az story panel aktiválása
+        message.text = "Itt Winters hadnagy. Orion, figyelj, a helyzet drámai fordulatot vett. Felderítőink jelentették, hogy az Onyxok fő flottája hatalmas ellentámadásra készül, és az Erebus Állomást vették célba. Ha sikerül felmenteniük a pozícióikat, az emberiség szinte biztosan elveszíti a csatát. Egyetlen esélyünk, ha megakadályozod, hogy elérjék az állomást. Vedd célba a flottát, semmisítsd meg az erősítéseiket, és biztosítsd, hogy az Erebus körüli térség a mi irányításunk alatt maradjon. Tudd, hogy az egész galaxis sorsa rajtad múlik. Winters, vége.";
+        charactername.text = "Winters hadnagy";
+        // Várakozás az Enter gomb lenyomására
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        storypanel.SetActive(false); // Az story panel deaktiválása
+    }
 }

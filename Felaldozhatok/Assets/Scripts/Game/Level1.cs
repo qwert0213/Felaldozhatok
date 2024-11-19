@@ -166,13 +166,13 @@ public class Level1 : MonoBehaviour
 
         introtext.SetActive(false); // Az intro szöveg deaktiválása
         yield return new WaitForSeconds(0.1f); // Várunk egy kicsit
-        yield return StoryText();
+        yield return MissionBrief1();
         levelPlayable = true;
         levelCounter++;
         LevelSet();
     }
 
-    public IEnumerator StoryText()
+    public IEnumerator MissionBrief1()
     {
         storypanel.SetActive(true); // Az story panel aktiválása
         message.text = "Itt Winters hadnagy a főparancsnokságról. Orion, figyelj, ez fontos. Nemrég elfogtunk egy rövid, kódolt adást az Onyxoktól. Az üzenet töredékes volt, de sikerült kihámozni belőle valami érdekeset. Úgy tűnik, koordinátákat küldtek a műveleti pontukhoz. Még nem tudjuk, pontosan mi vár ott, de nem szeretnénk, ha meglepnének minket. Te vagy az egyetlen, akiben teljesen megbízom ehhez a feladathoz. Menj a megadott koordinátákra, derítsd ki, mit terveznek, és jelents vissza, amint lehet. Tudom, hogy rádbízhatjuk ezt. Winters, vége.";
@@ -184,70 +184,3 @@ public class Level1 : MonoBehaviour
     }
 
 }
-
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Level1 : MonoBehaviour
-{
-    public SpawningEnemy spawner;
-    public EnemyManager enemyManager;
-    public Control control;
-    public List<int> spawns;
-    public AudioSource bossFight;
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawner = GameObject.Find("Spawner").GetComponent<SpawningEnemy>();
-        control = GameObject.Find("Player").GetComponent<Control>();
-        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        spawner.maxEnemies = 7;
-        spawns = new List<int> {1,1,2,3,2,1,99};
-        bossFight = GameObject.Find("BossFight").GetComponent<AudioSource>();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (spawner.canSpawn)
-        {
-                if (spawns[spawner.enemyCount] == 1)
-                {
-                    spawner.SpawnEnemy1();
-                EnemySpawned();
-            }
-            else
-            {
-                if (spawns[spawner.enemyCount] == 2)
-                {
-                    spawner.SpawnEnemy2();
-                    EnemySpawned();
-                }
-                else
-                {
-                    if (spawns[spawner.enemyCount] == 3)
-                    {
-                        spawner.SpawnEnemy3();
-                        EnemySpawned();
-                    }
-                    else
-                    {
-                        if (spawns[spawner.enemyCount] == 99 && enemyManager.enemiesKilled == spawner.maxEnemies - 1)
-                        {
-                            bossFight.Play();
-                            spawner.SpawnBoss1();
-                            EnemySpawned();
-                        }
-                    }
-                }
-            }
-        }
-    }
-    public void EnemySpawned() {
-        spawner.enemyCount++;
-        spawner.canSpawn = false;
-        spawner.elapsedTime = 0;
-    }
-}*/
