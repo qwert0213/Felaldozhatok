@@ -108,13 +108,21 @@ public class UpgradeShop : MonoBehaviour
     // Kilépés az Upgrade Shopból
     public IEnumerator ExitShop()
     {
-        gameObject.SetActive(false); // Az Upgrade Shop bezárása
+        HideUpgradeShop();
         if (level1.levelCounter == 1) { yield return MissionBrief2(); }
         else if (level1.levelCounter == 2) { yield return MissionBrief3(); }
         else if (level1.levelCounter == 3) { yield return MissionBrief4(); }
         else { yield return MissionBrief5(); }
-        level1.StartLevel();
+        StartCoroutine(level1.StartLevel());
+        gameObject.SetActive(false);
+
     }
+
+    public void OnExitShopButtonPressed()
+    {
+        StartCoroutine(ExitShop());
+    }
+
 
     public IEnumerator MissionBrief2()
     {
@@ -156,4 +164,25 @@ public class UpgradeShop : MonoBehaviour
 
         storypanel.SetActive(false); // Az story panel deaktiválása
     }
+
+    public void HideUpgradeShop()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            rectTransform.anchoredPosition = new Vector2(2000, 0); // Mozgasd ki a képernyőn kívülre
+        }
+    }
+
+    public void ShowUpgradeShop()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            rectTransform.anchoredPosition = Vector2.zero; // Helyezd vissza az eredeti pozícióba
+        }
+    }
+
+
+
 }

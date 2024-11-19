@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     public Text gameCompleteText; 
     public Text moneyText; // A pénz kijelzéséhez
     public GameObject upgradeShopUI; // Referencia az Upgrade Shop UI-ra
+    public UpgradeShop upgradeShop; // Referencia az Upgrade Shop UI-ra
     public int enemiesKilled = 0; // A megölt ellenségek száma
     private int maxEnemies; // A maximálisan spawnolható ellenségek száma
     public static EnemyManager instance; // Singleton referencia
@@ -79,13 +80,14 @@ public class EnemyManager : MonoBehaviour
     // "Mission Accomplished" felirat megjelenítése 3 másodpercig, majd az Upgrade Shop megnyitása
     private IEnumerator MissionSuccessRoutine()
     {
-        missionText.text = $"Mission Successful\nYour score: {playerStats.score}" ;
+        missionText.text = $"Mission Successful\nYour score: {playerStats.score}";
         ModifyTxt();
         yield return new WaitForSeconds(3); // Várunk 3 másodpercet
         missionText.text = ""; // Felirat eltüntetése
         level1.levelPlayable = false;
         enemiesKilled = 0;
         OpenUpgradeShop(); // Upgrade Shop megnyitása
+        upgradeShop.ShowUpgradeShop();
     }
 
     // "Upgrade Shop" UI megnyitása

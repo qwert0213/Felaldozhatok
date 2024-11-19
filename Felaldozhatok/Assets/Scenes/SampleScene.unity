@@ -1215,6 +1215,7 @@ MonoBehaviour:
   gameCompleteText: {fileID: 1802076578}
   moneyText: {fileID: 90146957}
   upgradeShopUI: {fileID: 1244188145}
+  upgradeShop: {fileID: 1244188149}
   enemiesKilled: 0
   playerStats: {fileID: 0}
   scoreFile: {fileID: 4900000, guid: 31f44254d646ef44e972891aa304e017, type: 3}
@@ -2760,11 +2761,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3220036}
-  storypanel: {fileID: 0}
+  storypanel: {fileID: 1774935535}
   playerCollision: {fileID: 930188331}
   feedbackText: {fileID: 1354291699}
-  charactername: {fileID: 0}
-  message: {fileID: 0}
+  charactername: {fileID: 64735016}
+  message: {fileID: 1499068960}
   level1: {fileID: 0}
 --- !u!1 &1244472444
 GameObject:
@@ -3601,7 +3602,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1244188149}
         m_TargetAssemblyTypeName: UpgradeShop, Assembly-CSharp
-        m_MethodName: ExitShop
+        m_MethodName: OnExitShopButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -159,14 +159,17 @@ public class Level1 : MonoBehaviour
     }
     public IEnumerator StartLevel()
     {
-        if (levelCounter == 0) { introtext.SetActive(true); } // Az intro szöveg aktiválása
+        if (levelCounter == 0)
+        {
+            introtext.SetActive(true); // Az intro szöveg aktiválása
 
-        // Várakozás az Enter gomb lenyomására
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+            // Várakozás az Enter gomb lenyomására
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 
-        introtext.SetActive(false); // Az intro szöveg deaktiválása
-        yield return new WaitForSeconds(0.1f); // Várunk egy kicsit
-        yield return MissionBrief1();
+            introtext.SetActive(false); // Az intro szöveg deaktiválása
+            yield return new WaitForSeconds(0.1f); // Várunk egy kicsit
+            yield return MissionBrief1();
+        }
         levelPlayable = true;
         levelCounter++;
         LevelSet();
@@ -183,4 +186,10 @@ public class Level1 : MonoBehaviour
         storypanel.SetActive(false); // Az story panel deaktiválása
     }
 
+    public void RestartLevel()
+    {
+        levelPlayable = true;
+        levelCounter++;
+        LevelSet();
+    }
 }

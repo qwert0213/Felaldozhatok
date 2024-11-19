@@ -31,9 +31,9 @@ public class RestartClick : MonoBehaviour
     public void OnClick()
     {
         menu.SetActive(false);
-        playerCollision.health = 3;
+        playerCollision.health = playerCollision.maxHealth;
         level1.levelCounter -= 1;
-        level1.StartLevel();
+        level1.RestartLevel();
         control.controllable = true;
         player.transform.position = new Vector3(-3, -19, 0);
         player.SetActive(true);
