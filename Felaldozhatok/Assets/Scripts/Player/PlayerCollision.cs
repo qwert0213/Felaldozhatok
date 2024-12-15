@@ -15,9 +15,9 @@ public class PlayerCollision : MonoBehaviour
     public float wait = 0;
     public EnemyManager enemyManager;
     public PlayerStats playerStats;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         control = GameObject.Find("Player").GetComponent<Control>();
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         health = maxHealth = 3;
@@ -25,10 +25,9 @@ public class PlayerCollision : MonoBehaviour
         playerStats = GameObject.Find("EnemyManager").GetComponent<PlayerStats>();
         gameOver.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
+        // Megsemmisülés figyelése
         if (health <= 0)
         {
             enemyManager.ModifyTxt();
@@ -45,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        // Űrhajó megsebződése
         if (other.gameObject.tag == "enemyAttack")
         {
             damageTaken.Play();
@@ -63,6 +63,7 @@ public class PlayerCollision : MonoBehaviour
             playerStats.AddScore(-20);
             health -= 1;
         }
+        // Képernyő széli falak figyelése
         if (other.gameObject.tag == "wallLeft")
         {
             control.goLeft = false;
@@ -73,15 +74,17 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    // Maximális életerő növelése
+
     public void UpgradeMaxHealth(int extraHealth)
-    {
+    {   
+        // Maximális életerő növelése
         maxHealth += extraHealth;
         health = maxHealth; // Frissítjük az aktuális életerőt a maximálisra
     }
 
     private void OnTriggerExit(Collider other)
     {
+        // Képernyő széli falak figyelése
         if (other.gameObject.tag == "wallLeft")
         {
             control.goLeft = true;

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Enemy3Attack : EnemyAttack
 {
-    // Start is called before the first frame update
     public GameObject spell;
-    // Update is called once per frame
-
     public override void Shoot()
     {
+        // Ellenség lövedékek generálása
         GameObject enemyAttack = Instantiate(spell, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
         attackSound.Play();
     }

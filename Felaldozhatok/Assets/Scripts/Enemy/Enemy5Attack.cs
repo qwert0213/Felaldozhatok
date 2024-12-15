@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Enemy5Attack : EnemyAttack
 {
-    // Start is called before the first frame update
 
     public GameObject syringe;
-    // Update is called once per frame
 
     public override void Shoot()
     {
+        // Ellenség lövedékek generálása
         int num = Random.Range(0, 3);
         for (int i = -9; i <= 9; i += 9)
         {

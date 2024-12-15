@@ -16,9 +16,9 @@ public class UpgradeShop : MonoBehaviour
 
     public void Start()
     {
+        // Szükséges gameobjectek megkeresése
         control = player.GetComponent<Control>();
         level1 = GameObject.Find("Logic").GetComponent<Level1>();
-        // Keressük meg a rocket GameObjectet a Player alatt
         GameObject rocket = GameObject.Find("rocket");
         if (rocket != null)
         {
@@ -30,9 +30,10 @@ public class UpgradeShop : MonoBehaviour
         }
     }
 
-    // Sebesség fejlesztése
+
     public void UpgradeSpeed()
     {
+        // Sebesség fejlesztése
         if (PlayerStats.instance.money >= 50)
         {
             control.movementSpeed += 5;
@@ -45,9 +46,10 @@ public class UpgradeShop : MonoBehaviour
         }
     }
 
-    // Támadás sebességének fejlesztése
+
     public void UpgradeAttack()
     {
+        // Támadás sebességének fejlesztése
         if (PlayerStats.instance.money >= 50)
         {
             control.attackRate -= 0.1f; // Csökkentjük az időt a támadások között
@@ -60,9 +62,10 @@ public class UpgradeShop : MonoBehaviour
         }
     }
 
-    // Lövedék sebességének növelése
+
     public void UpgradeProjectileSpeed()
     {
+        // Lövedék sebességének növelése
         if (PlayerStats.instance.money >= 50)
         {
             control.UpgradeProjectileSpeed(5); // Növeljük a lövedék sebességét
@@ -75,9 +78,10 @@ public class UpgradeShop : MonoBehaviour
         }
     }
 
-    // Maximális életerő növelése
+
     public void UpgradeMaxHealth()
     {
+        // Maximális életerő növelése
         if (PlayerStats.instance.money >= 50)
         {
             playerCollision.UpgradeMaxHealth(1); // Növeljük a maximális életerőt
@@ -90,13 +94,14 @@ public class UpgradeShop : MonoBehaviour
         }
     }
 
-    // Sebzés növelése
+
     public void UpgradeDamage()
     {
-        if (PlayerStats.instance.money >= 50)
+        // Sebzés növelése
+        if (PlayerStats.instance.money >= 100)
         {
             control.UpgradeDamage(1); // Növeljük a sebzést
-            PlayerStats.instance.money -= 50;
+            PlayerStats.instance.money -= 100;
             feedbackText.text = "Damage upgraded!";
         }
         else
@@ -105,9 +110,10 @@ public class UpgradeShop : MonoBehaviour
         }
     }
 
-    // Kilépés az Upgrade Shopból
+
     public IEnumerator ExitShop()
     {
+        // Kilépés az Upgrade Shopból
         HideUpgradeShop();
         if (level1.levelCounter == 1) { yield return MissionBrief2(); }
         else if (level1.levelCounter == 2) { yield return MissionBrief3(); }
@@ -167,6 +173,7 @@ public class UpgradeShop : MonoBehaviour
 
     public void HideUpgradeShop()
     {
+        // Shop elrejtésa
         RectTransform rectTransform = GetComponent<RectTransform>();
         if (rectTransform != null)
         {
@@ -176,6 +183,7 @@ public class UpgradeShop : MonoBehaviour
 
     public void ShowUpgradeShop()
     {
+        // Shop megjelenítése
         RectTransform rectTransform = GetComponent<RectTransform>();
         if (rectTransform != null)
         {

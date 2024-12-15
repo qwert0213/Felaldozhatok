@@ -9,17 +9,16 @@ public class EnemyAttack : MonoBehaviour
     public float attackRate;
     public Control control;
     public AudioSource attackSound;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése, adatok beállítása
         control = GameObject.Find("Player").GetComponent<Control>();
         SetAttackRate();
         SetAttackSound();
     }
-
-    // Update is called once per frame
     void Update()
     {
+        // Lövési idõ számolása
         if (control.controllable)
         {
             if (elapsedTime < attackRate)

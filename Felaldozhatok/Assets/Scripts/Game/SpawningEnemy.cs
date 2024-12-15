@@ -17,28 +17,26 @@ public class SpawningEnemy : MonoBehaviour
     public GameObject wreck1;
     public float spawnRate = 3; // Spawn sebessége másodpercenként
     public float elapsedTime = 2; // Elapsed time for spawning
-   // public int health = 1; // Az ellenség egészsége
     public Control control; // Referencia a játékos kontrolljára
     public int enemyCount =0; // Az eddig spawnolt ellenségek száma
     public bool canSpawn;
     public int maxEnemies;
     public EnemyManager enemyManager;
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         control = GameObject.Find("Player").GetComponent<Control>();
-        // A maximális ellenségek számának beállítása az EnemyManager-ben
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
     }
     public void ReportMaxEnemies() {
+        // Szint ellenségszámláló elindítása
         enemyManager.SetMaxEnemies(maxEnemies);
         enemyCount = 0;
     }
-
-    // Update is called once per frame
     void Update()
     {
+        // Spawnolások közötti idő számolása
         if (enemyCount < maxEnemies)
         {
             if (control.controllable)
@@ -56,11 +54,10 @@ public class SpawningEnemy : MonoBehaviour
             }
         }
     }
-
+    // Enemy típusok spawnolása
     public void SpawnEnemy1()
     {
         SpawnNewEnemy(enemy1);
-        // A RegisterEnemy() függvényt már nem használjuk itt
     }
     public void SpawnEnemy2()
     {
@@ -103,6 +100,7 @@ public class SpawningEnemy : MonoBehaviour
         SpawnNewEnemy(wreck1);
     }
     public void SpawnNewEnemy(GameObject enemy) { 
+        // Ellenség spawnolása
         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-9, 9), transform.position.y, 0), transform.rotation);
     }
 }

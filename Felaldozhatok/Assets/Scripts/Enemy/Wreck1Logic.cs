@@ -8,9 +8,9 @@ public class WreckCollision : MonoBehaviour
     public float gravityScale = 2.0f; // Itt állítjuk be a gravitáció mértékét
 
     private Rigidbody rb;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody>();
     }
@@ -21,10 +21,9 @@ public class WreckCollision : MonoBehaviour
         Vector3 customGravity = Physics.gravity * gravityScale;
         rb.AddForce(customGravity, ForceMode.Acceleration);
     }
-
-    // Update is called once per frame
     void Update()
     {
+        // 'Leesés' figyelés
         if (transform.position.y < -18)
         {
             PlayerStats.instance.AddMoney(10);
@@ -35,6 +34,7 @@ public class WreckCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        // Ütközés figyelés
         if (other.gameObject.tag == "player")
         {
             enemyManager.EnemyKilled();

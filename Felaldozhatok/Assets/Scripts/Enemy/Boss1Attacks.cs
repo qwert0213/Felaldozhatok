@@ -8,11 +8,10 @@ public class Boss1Attacks : EnemyAttack
     public GameObject spell;
     public GameObject spellBook;
     public int abilityCounter = 1;
-    // Update is called once per frame
-
 
     public void Ability1()
     {
+        // Ellenség lövedékek generálása
         for (int i = 0; i <= 2; i++)
         {
             Instantiate(spell, new Vector3(transform.position.x - 3 + (3 * i), transform.position.y, 0), transform.rotation);
@@ -20,6 +19,7 @@ public class Boss1Attacks : EnemyAttack
     }
     public void Ability2()
     {
+        // Ellenség lövedékek generálása
         for (int i = -10; i <= 10; i+=5)
         {
             Instantiate(spellBook, new Vector3(i, transform.position.y, 0), transform.rotation);
@@ -27,6 +27,7 @@ public class Boss1Attacks : EnemyAttack
     }
     public override void Shoot()
     {
+        // Ellenség támadás kiválasztása
         attackSound.Play();
         if (abilityCounter % 2 == 0)
         {

@@ -9,7 +9,6 @@ public class Boss2Attacks : EnemyAttack
     public GameObject candle;
     public int abilityCounter = 1;
     public PlayerCollision player;
-    // Update is called once per frame
 
     private void Awake()
     {
@@ -17,10 +16,12 @@ public class Boss2Attacks : EnemyAttack
     }
     public void Ability1()
     {
+        // Ellenség lövedékek generálása
         Instantiate(trident, new Vector3(player.transform.position.x, transform.position.y, 0), transform.rotation);
     }
     public void Ability2()
     {
+        // Ellenség lövedékek generálása
         for (int i = -10; i <= 0; i+=5)
         {
             Instantiate(candle, new Vector3(i, transform.position.y, 0), transform.rotation);
@@ -28,6 +29,7 @@ public class Boss2Attacks : EnemyAttack
     }
     public void Ability3()
     {
+        // Ellenség lövedékek generálása
         for (int i = 0; i <= 10; i+=5)
         {
             Instantiate(candle, new Vector3(i, transform.position.y, 0), transform.rotation);
@@ -35,6 +37,7 @@ public class Boss2Attacks : EnemyAttack
     }
     public override void Shoot()
     {
+        // Ellenség támadás kiválasztása
         attackSound.Play();
         if (abilityCounter % 3 == 1)
         {

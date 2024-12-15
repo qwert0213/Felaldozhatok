@@ -5,17 +5,12 @@ using UnityEngine.UI;
 public class GameLogic : MonoBehaviour
 {
     public Control control;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         control = GameObject.Find("Player").GetComponent<Control>();
         control.controllable = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 }

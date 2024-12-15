@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class EnemyAttackCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        // Leesés figyelés
         if (transform.position.y < - 18)
         {
             Destroy(this.gameObject);
@@ -20,6 +14,7 @@ public class EnemyAttackCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        // Ütközés figyelés
         if (other.gameObject.tag == "player")
         {
             Destroy(this.gameObject);

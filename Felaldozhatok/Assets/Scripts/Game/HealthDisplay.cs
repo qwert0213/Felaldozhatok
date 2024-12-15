@@ -11,13 +11,11 @@ public class HealthDisplay : MonoBehaviour
 
     public List<GameObject> hearts = new List<GameObject>(); // A szívek tárolása
 
-    // Start is called before the first frame update
     public void Start()
     {
         UpdateHearts();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Csak akkor frissítjük a szíveket, ha a játékos életereje megváltozott
@@ -27,9 +25,9 @@ public class HealthDisplay : MonoBehaviour
         }
     }
 
-    // A szívek frissítése a játékos életerejéhez igazodva
     public void UpdateHearts()
     {
+        // A szívek frissítése a játékos életerejéhez igazodva
         // Ha több szív van, mint a jelenlegi életerő, akkor a lista legelső szívét töröljük
         if (hearts.Count > playerCollision.health)
         {
@@ -39,7 +37,7 @@ public class HealthDisplay : MonoBehaviour
                 // A legelső szív átlátszóságának csökkentése
                 Image heartImage = hearts[0].GetComponent<Image>();
                 heartImage.color = new Color(heartImage.color.r, heartImage.color.g, heartImage.color.b, 0); // Az alpha érték 0-ra állítása
-                hearts.RemoveAt(0); // Eltávolítjuk a szívet a listából (opcionális, ha nem akarjuk később használni)
+                hearts.RemoveAt(0); // Eltávolítjuk a szívet a listából
             }
         }
         // Ha kevesebb szív van, mint a jelenlegi életerő, akkor új szíveket adunk hozzá

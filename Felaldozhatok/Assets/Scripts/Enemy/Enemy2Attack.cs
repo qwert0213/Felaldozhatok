@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Enemy2Attack : EnemyAttack
 {
-    // Start is called before the first frame update
     public GameObject bomb;
-    // Update is called once per frame
     public override void Shoot()
     {
+        // Ellenség lövedékek generálása
         GameObject enemyAttack = Instantiate(bomb, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
         attackSound.Play();
     }

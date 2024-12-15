@@ -12,9 +12,9 @@ public class RestartClick : MonoBehaviour
     public Level1 level1;
     public PlayerCollision playerCollision;
     public GameObject player;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         player = GameObject.Find("Player");
         level1 = GameObject.Find("Logic").GetComponent<Level1>();
         Button btn = restartButton.GetComponent<Button>();
@@ -23,13 +23,9 @@ public class RestartClick : MonoBehaviour
         playerCollision = GameObject.Find("rocket").GetComponent<PlayerCollision>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void OnClick()
     {
+        // Pálya újraindítás
         menu.SetActive(false);
         playerCollision.health = playerCollision.maxHealth;
         level1.levelCounter -= 1;

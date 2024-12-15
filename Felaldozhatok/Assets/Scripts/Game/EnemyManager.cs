@@ -27,7 +27,6 @@ public class EnemyManager : MonoBehaviour
     
     void Awake()
     {
-        // Singleton biztosítása
         if (instance == null)
         {
             instance = this;
@@ -38,16 +37,16 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
-    // A maximális ellenségszám beállítása (a SpawningEnemy.cs-ből hívjuk meg)
     public void SetMaxEnemies(int max)
     {
+        // A maximális ellenségszám beállítása
         maxEnemies = max;
         enemiesKilled = 0;
     }
 
-    // Az ellenségek halálának kezelése
     public void EnemyKilled()
     {
+        // Az ellenségek halálának kezelése
         enemiesKilled++;
         if (enemiesKilled == maxEnemies && playerCollision.health > 0) // Csak akkor írja ki, ha az összes spawnolt ellenség meghalt
         {
@@ -76,10 +75,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-
-    // "Mission Accomplished" felirat megjelenítése 3 másodpercig, majd az Upgrade Shop megnyitása
     private IEnumerator MissionSuccessRoutine()
     {
+        // "Mission Accomplished" felirat megjelenítése 3 másodpercig, majd az Upgrade Shop megnyitása
         missionText.text = $"Mission Successful\nYour score: {playerStats.score}";
         ModifyTxt();
         yield return new WaitForSeconds(3); // Várunk 3 másodpercet
@@ -90,9 +88,9 @@ public class EnemyManager : MonoBehaviour
         upgradeShop.ShowUpgradeShop();
     }
 
-    // "Upgrade Shop" UI megnyitása
     private void OpenUpgradeShop()
     {
+        // "Upgrade Shop" UI megnyitása
         upgradeShopUI.SetActive(true); // Az Upgrade Shop UI aktiválása
     }
 
@@ -110,14 +108,15 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
+        // Szükséges gameobjectek megkeresése
         playerStats = GameObject.Find("EnemyManager").GetComponent<PlayerStats>();
         level1 = GameObject.Find("Logic").GetComponent<Level1>();
         playerCollision = GameObject.Find("rocket").GetComponent<PlayerCollision>();
     }
 
-    // Update - minden képkockánál frissítjük a pénz kijelzést
     void Update()
     {
+        // Pénz kijelzésének frissítése
         moneyText.text = "Money: " + PlayerStats.instance.money;
         scoreContent = int.Parse(scoreFile.text);
     }

@@ -17,15 +17,9 @@ public class Control : MonoBehaviour
     public int upgradedProjectileSpeed = 0;
     public int upgradedDamage = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        // Irányítás
         if (controllable)
         {
             if (Input.GetKey(KeyCode.A)&&goLeft)
@@ -38,13 +32,12 @@ public class Control : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) && attackRate < elapsedTime)
             {
+                // Lövedék generálása
                 GameObject newProjectile = Instantiate(playerAttack, new Vector3(transform.position.x + 3, transform.position.y + 7, 0), transform.rotation);
-
                 // Átadjuk a fejlesztéseket a lövedéknek
                 PlayerAttack attackComponent = newProjectile.GetComponent<PlayerAttack>();
                 attackComponent.UpgradeProjectileSpeed(upgradedProjectileSpeed);
                 attackComponent.UpgradeDamage(upgradedDamage);
-
                 elapsedTime = 0;
             }
             else

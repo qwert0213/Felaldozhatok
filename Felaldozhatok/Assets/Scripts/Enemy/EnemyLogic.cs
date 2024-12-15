@@ -11,6 +11,7 @@ public class EnemyLogic : MonoBehaviour
     public Control control;
     void Awake()
     {
+        // Szükséges gameobjectek megkeresése
         playerCollision = GameObject.Find("rocket").GetComponent<PlayerCollision>();
     }
 
@@ -18,7 +19,7 @@ public class EnemyLogic : MonoBehaviour
     {
         if (health <= 0)
         {
-            // Ha az ellens�g meghal, jelentj�k az EnemyManager-nek
+            // Ha az ellenség meghal, jelentjük az EnemyManager-nek
             EnemyManager.instance.EnemyKilled();
             Destroy(this.gameObject);
         }

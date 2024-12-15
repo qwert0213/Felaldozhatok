@@ -22,9 +22,9 @@ public class Level1 : MonoBehaviour
     public AudioSource bossFight;
     public int levelCounter = 0;
     public bool levelPlayable = false;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         spawner = GameObject.Find("Spawner").GetComponent<SpawningEnemy>();
         control = GameObject.Find("Player").GetComponent<Control>();
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
@@ -40,13 +40,14 @@ public class Level1 : MonoBehaviour
     }
     public void LevelSet()
     {
+        // Aktuális szint beállítása
         spawns = spawn[levelCounter-1];
         spawner.maxEnemies = spawns.Count;
         spawner.ReportMaxEnemies();
     }
-    // Update is called once per frame
     void Update()
     {
+        // Megfelelő ellenség megkeresése és spawnolása
         if (spawner.canSpawn && levelPlayable && spawner.enemyCount != spawns.Count)
         {
             if (spawns[spawner.enemyCount] == 1)
@@ -188,6 +189,7 @@ public class Level1 : MonoBehaviour
 
     public void RestartLevel()
     {
+        // Pálya újraindítása
         levelPlayable = true;
         levelCounter++;
         LevelSet();

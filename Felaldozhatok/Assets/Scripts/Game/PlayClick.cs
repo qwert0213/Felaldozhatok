@@ -10,21 +10,17 @@ public class PlayClick : MonoBehaviour
     public Control control;
     public GameObject menu;
     public Level1 level1;
-    // Start is called before the first frame update
     void Start()
     {
+        // Szükséges gameobjectek megkeresése
         level1 = GameObject.Find("Logic").GetComponent<Level1>();
         Button btn = playButton.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
         control = GameObject.Find("Player").GetComponent<Control>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnClick() {
+        // Szint indítása
         menu.SetActive(false);
         control.controllable = true;
         level1.StartCoroutine(level1.StartLevel());

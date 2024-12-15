@@ -9,7 +9,6 @@ public class PlayerStats : MonoBehaviour
     public int score = 0;
     void Awake()
     {
-        // Singleton biztosítása
         if (instance == null)
         {
             instance = this;
@@ -20,14 +19,16 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    // Pénz növelése
+
     public void AddMoney(int amount)
-    {
+    {   
+        // Pénz növelése
         money += amount;
     }
 
     public void AddScore(int scoreToAdd)
     {
+        // Pont növelése
         score += scoreToAdd;
         if (score < 0)
         {
